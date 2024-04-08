@@ -1,6 +1,6 @@
 <!-- HTML -->
 <div id="app">
-  <app-contents />
+  <app-contents v-on:refresh="showAlert" />
 </div>
 
 <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -13,14 +13,19 @@
     `,
     methods: {
       sendEvent() {
-        this.$emit('refresh');
+        this.$emit("refresh");
       },
-    }
+    },
   };
 
   Vue.createApp({
+    methods: {
+      showAlert() {
+        alert("새로 고침");
+      },
+    },
     components: {
-      'app-contents': appContents,
-    }
+      "app-contents": appContents,
+    },
   }).mount("#app");
 </script>

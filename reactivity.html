@@ -1,0 +1,23 @@
+<div id="app"></div>
+
+<script>
+  let data = {
+    msg: 10,
+  };
+
+  function render(sth) {
+    const div = document.querySelector("#app");
+    div.innerHTML = sth;
+  }
+
+  let app = new Proxy(data, {
+    get() {
+      console.log("hi");
+    },
+    set(target, property, value) {
+      console.log("change");
+      target[property] = value;
+      render(value);
+    },
+  });
+</script>
